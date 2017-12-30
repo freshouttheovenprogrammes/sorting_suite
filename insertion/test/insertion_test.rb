@@ -1,18 +1,19 @@
-require './lib/insertion'
 require 'minitest/autorun'
 require 'minitest/pride'
+require_relative '../lib/insertion'
 
 class InsertionTest < Minitest::Test
 
-  def test_that_it_exists
+  def test_what_happens_if_pass_nil
     insertion = Insertion.new
 
-    assert_instance_of Insertion, insertion
+    assert_equal [], insertion.sort([])
   end
 
-  def test_that_it_sorts_past_first_element
+  def test_it_sorts
     insertion = Insertion.new
 
-    assert_equal [1,3,4,2,5,99], insertion.sort([4,3,1,2,5,99])
+    assert_equal [*1..10000], insertion.sort([*1..10000].shuffle)
   end
+
 end
